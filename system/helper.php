@@ -116,4 +116,30 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
 } else {
     define('IS_AJAX', false);
 }
+function u($url)
+{
+     #将传进来的短位网址转换成数组,
+     #用来取出其中的模块,控制器和方法
+     $info = explode('/',$url);
+     #拼合出路径, 按输入的内容把内容做处理返回
+    #如果数组中的下标个数等于1的话,说明只传进来一个参数
+    if (count($info)==1)
+    {
+        $res = "?s=".MODULE.'/'.CONTROLLER.'/'.$info[0];
+    }elseif (count($info)==2)
+    {
+        $res = "?s=".MODULE.'/'.$info[0].'/'.$info[1];
+    }else
+    {
+        $res = "?s=".$info[0].'/'.$info[1].'/'.$info[2] ;
+    }
+    return $res;
+}
+function c($path)
+{
+    if (isset($path))
+    {
+
+    }
+}
 

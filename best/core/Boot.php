@@ -47,14 +47,16 @@ class Boot
 //            p($info);
             #将控制器首字母大写,在拼合路径处用到
             $info[1] = ucfirst($info[1]);
+            #拼合成了类名,下面会实例化他,传入方法
 
             $c = "app\\$info[0]\\controller\\$info[1]";
 //            p($c);
+            #在回调函数里回档参数传入
             $a = $info[2];
             #定义常量
             define('MODULE',strtolower($info[0]));#模块
             define('CONTROLLER',strtolower($info[1]));#控制器
-            define('AXTION',strtolower($info[2]));#方法
+            define('ACTION',strtolower($info[2]));#方法
 
         }else#如果没有传入参数,就走默认控制器和方法
         {
@@ -62,9 +64,11 @@ class Boot
             $a = 'index';
             define('MODULE','home');#模块
             define('CONTROLLER','index');#控制器
-            define('AXTION',$a);#方法
+            define('ACTION',$a);#方法
         }
-        return call_user_func_array([new $c,$a],[]);
+        #比如传入home/index/index就会实例化控制器index,把方法$a传入,就会调用里面的方法
+        #这里必须用echo,目的是运行base类里面的__toString
+        echo call_user_func_array([new $c,$a],[]);
 
     }
 

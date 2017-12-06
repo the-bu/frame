@@ -1,6 +1,7 @@
 <?php
 namespace app\home\controller;
 use best\core\Controller;
+use best\view\View;
 
 /**
  * Created by PhpStorm.
@@ -19,10 +20,12 @@ class Index extends Controller
     #index方法显示首页,返回数据
     public function index()
     {
-        echo '首页';
+
+        return View::make();
+
     }
     public function test()
     {
-        $this->setRedirect('?s=home/index/index')->message('没有此页面');
+        $this->setRedirect(u('index'))->message('没有此页面');
     }
 }
