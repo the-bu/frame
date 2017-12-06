@@ -137,9 +137,12 @@ function u($url)
 }
 function c($path)
 {
-    if (isset($path))
-    {
+        #dabase.user拿到数组
+        $info = explode('.',$path);
+        #拼合并加载配置项路径
+        $config = include "../system/config/".$info[0].'.php';
+        #如果需要的参数在里面将其返出, 没有旧返回null
+        return isset($config[$info[1]]) ? $config[$info[1]] : null;
 
-    }
 }
 
