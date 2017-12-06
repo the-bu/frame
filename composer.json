@@ -1,0 +1,21 @@
+{
+    "name": "the-bu/frame",
+    "type": "project",
+    "authors": [
+        {
+            "name": "阿布",
+            "email": "the-bu@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":{
+        "files":[
+            "system/helper.php"
+        ],
+        "psr-4":{
+            "best\\" :"best\\",
+            "app\\" : "app\\"
+        }
+    }
+}
