@@ -1,8 +1,8 @@
 <?php
 namespace app\home\controller;
 use best\core\Controller;
+use best\model\Model;
 use best\view\View;
-
 /**
  * Created by PhpStorm.
  * User: Bu
@@ -20,12 +20,19 @@ class Index extends Controller
     #index方法显示首页,返回数据
     public function index()
     {
-
-        return View::make();
+//        p(c('database.driver'));#测试c函数
+//        $res = Model::q("select * from student");
+//        p($res);
+//        Model::e("insert into student(name) values('阿沁')");
+        return View::make()->with(compact('data'));
 
     }
     public function test()
     {
-        $this->setRedirect(u('index'))->message('没有此页面');
+        $res = Model::q("select * from student");
+        echo 1;
+        p($res);
+
+//        $this->setRedirect(u('index'))->message('没有此页面');
     }
 }

@@ -15,7 +15,8 @@
         ],
         "psr-4":{
             "best\\" :"best\\",
-            "app\\" : "app\\"
+            "app\\" : "app\\",
+            "system\\" : "system\\"
         }
     }
 }

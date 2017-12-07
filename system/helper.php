@@ -25,13 +25,13 @@ if (!function_exists('p')) {
      *
      * @param $var    打印的变量
      */
-    function p($var)
+function p($var)
     {
         echo '<pre style="background: #ccc;padding: 8px;border-radius: 6px">';
         if (is_bool($var) || is_null($var)) {
-            var_dump($var);
+            var_dump($var);die;
         } else {
-            print_r($var);
+            print_r($var);die;
         }
         echo '</pre>';
     }
@@ -135,14 +135,31 @@ function u($url)
     }
     return $res;
 }
-function c($path)
+function c($path='')#给个默认值防止报错
 {
+    if (! $path)#如果$path没有传值,进来就是false,取反下变成true,返回bull
+    {
+        return null;
+    };
         #dabase.user拿到数组
         $info = explode('.',$path);
-        #拼合并加载配置项路径
-        $config = include "../system/config/".$info[0].'.php';
+        #拼合配置项路径
+        $config = "../system/config/".$info[0].'.php';
+        #判断配置项文件是否存在
+        if (!is_file($config))
+        {
+            return null  ;#如果存在旧返回文件路径
+        }
+        $data = include $config;
+        if (count($info)==1)
+        {
+            return $data;
+        }else
+        {
+            return isset($data[$info[1]]) ? $data[$info[1]] : null;
+        }
         #如果需要的参数在里面将其返出, 没有旧返回null
-        return isset($config[$info[1]]) ? $config[$info[1]] : null;
+
 
 }
 

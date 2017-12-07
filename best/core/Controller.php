@@ -11,6 +11,7 @@ namespace best\core;
 
 class Controller
 {
+    #定义储地址的属性
     private $url;
 
     protected function message($msg){

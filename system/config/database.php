@@ -6,9 +6,9 @@
  * Time: 21:44
  */
 return [
-    'driver'  => 'mysql',#数据库类型
-    'host'    => 'localhost',#主机地址
-    'user'    => 'root',
-    'password'=> 'root',
-    'dbname'  => 'c89'
+    'driver'   => 'mysql' ,//数据库驱动
+    'host'     => 'localhost' ,//数据库主机地址
+    'dbname'   => 'c89' ,//数据库名
+    'username' => 'root' ,//数据库用户名
+    'password' => 'root' ,//数据库密码
 ];

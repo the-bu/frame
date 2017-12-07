@@ -23,7 +23,7 @@ class Base
          return $this ;
 
     }
-    public function with($var)
+    public function with($var=[])#给$var一个默认值是个空数组, 因为extract ()只可以转换数组变成变量做为下标的格式
     {
         $this -> data = $var;
         return $this;
@@ -38,7 +38,12 @@ class Base
     {
 
         extract ($this->data);
-        include  $this -> path;
+        #如果路径存在的话在执行, 防止不调用make()方法
+        if ($this ->path)
+        {
+            include  $this -> path;
+        }
+
         return '';
     }
 }
